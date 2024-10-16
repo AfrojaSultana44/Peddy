@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Adoption</title>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font awesome -->
+    <script
+      src="https://kit.fontawesome.com/d3c3d5f656.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- DaisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="font-[lato]">
+    <header class="lg:container mx-auto">
+      <nav class="py-12">
+        <div class="navbar bg-base-100">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li><a>Home</a></li>
+                <li><a>Shop</a></li>
+                <li><a>Contact</a></li>
+              </ul>
+            </div>
+            <a class="text-xl flex items-center justify-between"
+              ><span><img src="./images/logo.webp" alt="logo" /></span
+              ><span class="ml-3 font-bold text-[32px] text-[#131313]"
+                >Peddy</span
+              ></a
+            >
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+              <li><a>Home</a></li>
+              <li><a>Shop</a></li>
+              <li><a>Contact</a></li>
+            </ul>
+          </div>
+          <div class="navbar-end">
+            <a>
+              <img
+                class="w-[56px] h-[56px]"
+                src="./images/user-icon.svg"
+                alt=""
+              />
+            </a>
+          </div>
+        </div>
+      </nav>
+      <section>
+        <div class="hero min-h-screen">
+          <div class="hero-content text-center">
+            <div class="max-w-xl">
+              <p class="mb-6">
+                <span class="font-bold text-2xl text-[rgba(19,19,19,0.6)]"
+                  >Bringing Families Together </span
+                >❤️‍🔥
+              </p>
+              <h1 class="text-5xl font-black text-[rgb(19,19,19)]">
+                Your Path to Adoption <br />
+                Starts Here
+              </h1>
+              <p class="pb-8 pt-6 text-[#131313]">
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a
+              </p>
+              <a href="#best-friend">
+                <button class="btn bg-[#0E7A81] text-white font-bold text-xl">
+                  View More
+                </button>
+              </a>
+              <div class="mt-12">
+                <img src="./images/pet.webp" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+    <main class="lg:container mx-auto">
+      <section id="best-friend" class="my-16">
+        <div class="hero">
+          <div class="hero-content text-center">
+            <div class="max-w-xl">
+              <h1 class="text-3xl font-black text-[rgb(19,19,19)]">
+                Adopt Your Best Friend
+              </h1>
+              <p class="pt-6 text-[rgba(19,19,19,0.7)]">
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          id="category-container"
+          class="flex justify-between gap-3 mb-8 mt-12 px-5 flex-wrap"
+        ></div>
+
+        <div id="spinner" class="hidden text-center py-4">
+          <span class="loading loading-bars loading-xs"></span>
+          <span class="loading loading-bars loading-sm"></span>
+          <span class="loading loading-bars loading-md"></span>
+          <span class="loading loading-bars loading-lg"></span>
+        </div>
+
+        <div class="flex justify-between items-center mb-8 px-5">
+          <h3 class="text-[rgb(19,19,19)] font-black text-2xl">
+            Best Deal For you
+          </h3>
+          <button
+            onclick="sortingHandler()"
+            class="btn bg-[rgb(14,122,129)] rounded-xl text-white text-xl font-bold"
+          >
+            Sort by Price
+          </button>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-3 px-5">
+          <div
+            id="pet-container"
+            class="basis-full order-2 md:order-1 md:basis-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+          ></div>
+          <div class="basis-full order-1 md:order-2 md:basis-1/4 border border-[rgba(19,19,19,0.1)] rounded-lg">
+            <div
+              id="liked-image"
+              class="w-full grid grid-cols-2 gap-2 p-3"
+            ></div>
+          </div>
+        </div>
+
+      </section>
+      <section>
+        <button class="btn hidden" onclick="custom_modal.showModal()">
+          open modal
+        </button>
+        <dialog id="custom_modal" class="modal">
+          <div class="modal-box">
+            <div id="detail-content"></div>
+            <div class="modal-action">
+              <form method="dialog" class="w-full">
+                <button
+                  class="w-full btn bg-[rgba(14,122,129,0.1)] text-[rgb(14,122,129)] text-[18px] font-bold"
+                >
+                  Cancel
+                </button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+      </section>
+
+      <section>
+        <dialog id="counter_modal" class="modal">
+          <div class="modal-box">
+            <div id="adopt-content" class=""></div>
+          </div>
+        </dialog>
+      </section>
+    </main>
+    <footer class="bg-[rgb(19,19,19)]">
+      <div
+        class="footer lg:container mx-auto flex flex-col md:flex-row md:justify-between md:items-start text-base-content py-16 px-5"
+      >
+        <nav class="w-full md:w-[45%]">
+          <div class="w-full flex justify-start items-center">
+            <img src="./images/logo.webp" alt="logo" />
+            <span class="ml-3 text-[#FFFFFF] font-black text-[32px]"
+              >Peddy</span
+            >
+          </div>
+          <div
+            class="w-full text-[rgba(255,255,255,0.9)] space-y-2 my-6 font-normal text-[16px]"
+          >
+            <p>Location: av. Washington 165, NY CA 54003</p>
+            <p>Phone: +31 85 964 47 25</p>
+            <p>Email: info@yourdomain.com</p>
+            <p>Openings hours: 9.00 AM - 5.00 PM</p>
+          </div>
+          <div class="w-full flex justify-start items-center gap-6">
+            <a class="link link-hover"><img src="./images/fb.svg" alt="" /></a>
+            <a class="link link-hover"
+              ><img src="./images/twitter.svg" alt=""
+            /></a>
+            <a class="link link-hover"
+              ><img src="./images/youtube.svg" alt=""
+            /></a>
+            <a class="link link-hover"
+              ><img src="./images/insta.svg" alt=""
+            /></a>
+          </div>
+        </nav>
+
+        <nav class="w-full md:w-[25%]">
+          <h6 class="text-[rgba(255,255,255,0.9)] text-[18px] font-bold mb-8">
+            Useful Links
+          </h6>
+          <a
+            class="link link-hover text-[rgba(255,255,255,0.6)] text-[16px] font-normal"
+            >Home</a
+          >
+          <a
+            class="link link-hover text-[rgba(255,255,255,0.6)] text-[16px] font-normal"
+            >About Us</a
+          >
+          <a
+            class="link link-hover text-[rgba(255,255,255,0.6)] text-[16px] font-normal"
+            >Animals</a
+          >
+          <a
+            class="link link-hover text-[rgba(255,255,255,0.6)] text-[16px] font-normal"
+            >Foundation</a
+          >
+          <a
+            class="link link-hover text-[rgba(255,255,255,0.6)] text-[16px] font-normal"
+            >Contact</a
+          >
+        </nav>
+
+        <div class="w-full md:w-[30%]">
+          <h6 class="text-[rgba(255,255,255,0.9)] text-[18px] font-bold mb-8">
+            Drop a Message
+          </h6>
+          <form class="w-full">
+            
+              <div class="w-full mb-4">
+                <input
+                  class="w-full bg-[rgba(255,255,255,0.05)] p-4 rounded-xl text-[rgba(255,255,255,0.6)] font-normal text-[16px]"
+                  type="email"
+                  placeholder="Enter your email"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="w-full">
+                <button
+                  class="p-4 w-full border-none text-white text-xl font-bold bg-[rgb(14,122,129)] rounded-xl"
+                >
+                  Subscribe
+                </button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
